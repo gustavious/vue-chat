@@ -1,3 +1,4 @@
+<script src="main.js"></script>
 <template>
   <v-app>
     <v-app-bar
@@ -38,19 +39,19 @@
     </v-app-bar>
 
     <v-main>
-      <HelloWorld/>
+      <ChatWindow/>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import ChatWindow from './components/ChatWindow';
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
+    ChatWindow,
   },
 
   data: () => ({
