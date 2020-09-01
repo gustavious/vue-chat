@@ -1,3 +1,4 @@
+<script src="../store/index.js"></script>
 <template>
   <div>
     <div class="message" v-for="(message,index) in messages" v-bind:key="index">
@@ -11,21 +12,8 @@
 
 <script>
 export default {
-  data () {
-    return {}
-  },
   props: [
     'messages'
   ],
-  computed: {},
-  methods: {}
 }
 </script>
-
-<style>
-span.emoji {
-  font-size: 20px;
-  vertical-align: middle;
-  line-height: 2;
-}
-</style>

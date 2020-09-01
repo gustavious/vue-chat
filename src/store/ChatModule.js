@@ -16,7 +16,6 @@ const ChatModule = {
         date: payload.date
       }
       context.getters.messages.push(message)
-      console.log(message);
     }
   },
   getters: {

@@ -1,14 +1,14 @@
-
+<script src="../store/index.js"></script>
 <template>
   <v-container fluid style="padding: 0;">
     <v-row no-gutters>
-      <v-col sm="10" style="position: relative;">
-        <div class="chat-container" v-on:scroll="onScroll" ref="chatContainer" >
-          <message :messages="messages" @imageLoad="scrollToEnd"></message>
+      <v-col sm="14" style="position: relative;">
+        <div class="chat-container" ref="chatContainer">
+          <message :messages="messages" class="message own"></message>
         </div>
         <div class="typer">
-          <input type="text" placeholder="Type here..." v-on:keyup.enter="sendMessage" v-model="content">
-            <v-icon>mdi-emoticon-outline</v-icon>
+          <input type="text" placeholder="Escribe un mensaje..." v-on:keyup.enter="sendMessage" v-model="content">
+          <v-icon>mdi-desktop-classic</v-icon>
         </div>
       </v-col>
     </v-row>
@@ -16,21 +16,15 @@
 </template>
 
 <script>
-import Message from './parts/Message.vue'
+import Message from './Message.vue'
 export default {
   data () {
     return {
       content: '',
       chatMessages: [],
-      emojiPanel: false,
-      currentRef: {},
-      loading: false,
-      totalChatHeight: 0
     }
   },
-  props: [
-    'id'
-  ],
+  props: [],
   mounted () {
     this.loadChat()
   },
@@ -43,24 +37,9 @@ export default {
       return this.$store.getters.messages
     },
   },
-  watch: {
-  },
   methods: {
     loadChat () {
-      this.totalChatHeight = this.$refs.chatContainer.scrollHeight
-      this.loading = false
       this.chatMessages = []
-    },
-    onScroll () {
-      let scrollValue = this.$refs.chatContainer.scrollTop
-      if (scrollValue < 100 && !this.loading) {
-        this.totalChatHeight = this.$refs.chatContainer.scrollHeight
-        this.loading = true
-        let currentTopMessage = this.chatMessages[0]
-        if (currentTopMessage === undefined) {
-          this.loading = false
-        }
-      }
     },
     sendMessage () {
       if (this.content !== '') {
@@ -68,21 +47,11 @@ export default {
         this.content = ''
       }
     },
-    scrollToEnd () {
-      this.$nextTick(() => {
-        var container = this.$el.querySelector('.chat-container')
-        container.scrollTop = container.scrollHeight
-      })
-    },
   }
 }
 </script>
 
 <style>
-.scrollable {
-  overflow-y: auto;
-  height: 90vh;
-}
 .typer{
   box-sizing: border-box;
   display: flex;
@@ -92,6 +61,7 @@ export default {
   width: 100%;
   background-color: #fff;
   box-shadow: 0 -5px 10px -5px rgba(0,0,0,.2);
+  padding-left: 2%;
 }
 .typer input[type=text]{
   position: absolute;
@@ -119,7 +89,7 @@ export default {
 .message.own .content{
   background-color: lightskyblue;
 }
-.chat-container .username{
+.chat-container {
   font-size: 18px;
   font-weight: bold;
 }
