@@ -4,18 +4,17 @@ const ChatModule = {
   },
   mutations: {
     pushMessage (state, payload) {
-      payload["0"] = {name: "Default"}
-      state.chats = payload
+      console.log('Mutation received:', state, payload);
+      state.messages.push(payload);
     }
   },
   actions: {
     sendMessage (context, payload) {
       const message = {
-        user: payload.username,
         content: payload.content,
         date: payload.date
       }
-      context.getters.messages.push(message)
+      context.commit("pushMessage", message)
     }
   },
   getters: {

@@ -32,7 +32,7 @@ export default {
   },
   computed: {
     messages () {
-      console.log('Messages', this.$store.getters.messages);
+      console.log('User Messages: ', this.$store.getters.messages);
       return this.$store.getters.messages
     },
   },
