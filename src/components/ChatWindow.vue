@@ -3,7 +3,7 @@
     <v-row no-gutters>
       <v-col sm="14" style="position: relative;">
         <div class="chat-container" ref="chatContainer">
-          <message :messages="messages" class="message own"></message>
+          <message :messages="messages"></message>
         </div>
         <div class="typer">
           <input type="text" placeholder="Escribe un mensaje..." v-on:keyup.enter="sendMessage" v-model="content">
