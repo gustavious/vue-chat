@@ -3,7 +3,7 @@ const ChatModule = {
     messages: []
   },
   mutations: {
-    setChats (state, payload) {
+    pushMessage (state, payload) {
       payload["0"] = {name: "Default"}
       state.chats = payload
     }

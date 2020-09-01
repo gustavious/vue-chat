@@ -1,4 +1,3 @@
-<script src="../store/index.js"></script>
 <template>
   <v-container fluid style="padding: 0;">
     <v-row no-gutters>

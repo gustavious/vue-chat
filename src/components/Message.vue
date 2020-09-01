@@ -1,4 +1,3 @@
-<script src="../store/index.js"></script>
 <template>
   <div>
     <div class="message" v-for="(message,index) in messages" v-bind:key="index">
