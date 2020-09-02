@@ -64,7 +64,7 @@ export default {
 }
 .typer input[type=text]{
   position: absolute;
-  left: 2.5rem;
+  left: 3.5rem;
   padding: 1rem;
   width: 80%;
   background-color: transparent;
